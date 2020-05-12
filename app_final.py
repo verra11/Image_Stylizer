@@ -2,11 +2,8 @@ import os
 from flask import Flask, send_from_directory
 from flask import render_template, request
 
-import argparse
 import imutils
-import time
 import cv2
-import numpy as np
 
 app = Flask(__name__)
 
@@ -18,7 +15,6 @@ model_path = "models/instance_norm/udnie.t7"
 def run_model():
     image_path = "static/content.jpg"
 
-    print("[INFO] loading style transfer model...")
     net = cv2.dnn.readNetFromTorch(model_path)
 
     image = cv2.imread(image_path)
@@ -30,9 +26,7 @@ def run_model():
         (103.939, 116.779, 123.680), swapRB=False, 
         crop=False)
     net.setInput(blob)
-    start = time.time()
     output = net.forward()
-    end = time.time()
 
     output = output.reshape((3, output.shape[2], 
         output.shape[3]))
@@ -41,9 +35,6 @@ def run_model():
     output[2] += 123.680
     output /= 255.0
     output = output.transpose(1, 2, 0)
-
-    print("[INFO] neural style transfer took {:.4f} seconds".
-        format(end - start))
 
     img = cv2.normalize(src=output, dst=None, alpha=0,
     beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
