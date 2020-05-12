@@ -1,0 +1,33 @@
+body {
+	font-family: sans-serif;
+	background-color: black;
+}
+
+h2 {
+	text-align: center;
+	/*background-color: white;*/
+	color: lightblue;
+	margin: 30px 0 50px;
+}
+
+.gallery {
+	text-align: center;
+}
+
+.gallery img {
+	/*padding: 20px;*/
+	margin: 10px;
+	transition: 0.5s;
+	height: 250px;
+	width: 250px;
+	opacity: 75%;
+	/*border: 10px solid white;*/
+
+}
+
+.gallery img:hover {
+	transform: scale(1.05);
+	opacity: 100%;
+	/*border: 10px solid black;*/
+}
+

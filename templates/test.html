@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Stylizer</title>
+	<style type="text/css">
+		
+		body {
+
+			background-color: lightblue;
+
+		}
+		h2 {
+			text-align: center;
+			font-family: sans-serif;
+		}
+
+		.inp {
+			text-align: center;
+			font-family: sans-serif;
+		}
+
+		#btn_submit, #btn_up, #label {
+			margin: 1px;
+			border: 0;
+			padding: 5px;
+			color: black;
+			/*background-color: #00005c;*/
+			text-align: center;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+		#btn_submit:hover {
+			background: black;
+			color: white;
+		}
+
+	</style>
+</head>
+<body>
+
+	<h2>Upload your image</h2>
+
+	<div class="inp">
+
+	<form action="/upload" method="POST" enctype="multipart/form-data">
+
+		<label id="label">Content Image :</label>
+		<input id="btn_up" type="file" name="file" accept="image/*">
+		<br>
+		<br>
+		<input id="btn_submit" type="submit" value="Upload">
+
+	</form>
+	
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!-- <!DOCTYPE html> -->
+<html>
+<head>
+	<title>Image Stylizer</title>
+
+	<script type="text/javascript"
+    src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript">
+		$(document).ready(function(){    
+	    if(document.URL.indexOf("#")==-1){
+        url = document.URL+"#";
+        location = "#";
+        location.reload(true);
+		    }
+		});
+	</script>
+
+	<style type="text/css">
+		
+		body {
+			background-color: lightblue;
+		}
+		h2 {
+			font-family: sans-serif;
+			text-align: center;
+		}
+		.gallery img {
+			margin:0 auto;
+		}
+	</style>
+
+</head>
+<body>
+
+	<h2>Here's your image.</h2>
+	<!-- <br> -->
+	<div class="gallery" align="center">
+	<!-- <img src="{{url_for('send_image', filename=image_name)}}"> -->
+	<!-- <img src="{{url_for('static', filename='output.jpg')}}"> -->
+		<img src="{{url_for('static', filename=image_name)}}">
+
+	</div>
+
+</body>
+</html>
