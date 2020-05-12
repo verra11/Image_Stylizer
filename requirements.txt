@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 absl-py==0.9.0
 aiofiles==0.4.0
 aiohttp==3.6.2
@@ -251,3 +252,14 @@ xkit==0.0.0
 yarl==1.4.2
 zipp==3.1.0
 zope.interface==4.3.2
+=======
+Flask==1.1.2
+gunicorn>=19.9.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+Werkzeug==1.0.0
+itsdangerous==1.1.0
+imutils==0.5.3
+opencv-python==4.2.0.34
+opencv-contrib-python==4.2.0.34
+>>>>>>> 6125338edd3a3f019fe25d2bc6efe636cd78a862
