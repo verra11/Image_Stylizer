@@ -13,7 +13,7 @@ model_path = "models/instance_norm/udnie.t7"
 
 
 def run_model():
-    image_path = "images/style/candy.jpg"
+    image_path = "static/content.jpg"
 
     net = cv2.dnn.readNetFromTorch(model_path)
 
@@ -58,7 +58,7 @@ def index():
 
 @app.route("/upload", methods=['POST', 'GET'])
 def upload():
-    target = os.path.join(APP_ROOT, 'images/')
+    target = os.path.join(APP_ROOT, 'static/')
     print(target)
 
     if not os.path.isdir(target):
@@ -69,7 +69,7 @@ def upload():
         print(file)
         filename = file.filename
         # filename="content.jpg"
-        destination = "/".join([target, filename])
+        destination = "/".join([target, "content.jpg"])
         print(destination)
         file.save(destination)
 #         d2 = os.path.join(APP_ROOT, 'images/content/content.jpg')
