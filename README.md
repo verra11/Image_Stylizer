@@ -1,1 +1,1 @@
-## An API for Neuarl Style Transfer
+## An API for Neural Style Transfer

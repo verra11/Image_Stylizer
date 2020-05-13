@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Image Stylizer</title>
-
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Varela+Round" />
 	<script type="text/javascript"
     src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
@@ -19,28 +19,74 @@
 	<style type="text/css">
 		
 		body {
-			background-color: lightblue;
+			font-family: sans-serif;
+			background: url('static/homebg.png') no-repeat center center fixed;
+			background-size: cover;
+			height: 100%;
+			overflow: hidden;
 		}
 		h2 {
-			font-family: sans-serif;
+			text-align: center;
+			/*background-color: white;*/
+			color: white;
+			font-size: 64px;
+			font-family: "Varela Round";
+			margin: 30px 0 50px;
+		}
+		h5{
+			color: #FF7D32;
+			font-size: 32px;
+			font-family: "Varela Round";
+			margin-bottom: 12px;
+		}
+		.leftsided{
+			width: 50%;
+			top: 100px;
+			float: left;
+			text-align: center;
+			
+		}
+
+		.illus{
+			width: 75%;
+		}
+
+		.rightsided{
+
+			width: 50%;
+			margin-left: 50%;
+			
 			text-align: center;
 		}
 		.gallery img {
-			margin:0 auto;
+			width: 80%;
+			height: 70%;
+			object-fit: scale-down;
+			
 		}
 	</style>
 
 </head>
 <body>
 
-	<h2>Here's your image.</h2>
-	<!-- <br> -->
-	<div class="gallery" align="center">
-	<!-- <img src="{{url_for('send_image', filename=image_name)}}"> -->
-	<!-- <img src="{{url_for('static', filename='output.jpg')}}"> -->
-		<img src="{{url_for('static', filename=image_name)}}">
+	<h2>IMAGE STYLIZER</h2>
+	<div style="width: 100%">
+		<div class="leftsided">
+			<h5>#ENJOY!!</h5>
+			<img src="static/three.svg" class="illus"/>
+		</div>
+		<div class="rightsided">
+			<div class="gallery" align="center">
+				<!-- <img src="{{url_for('send_image', filename=image_name)}}"> -->
+				<!-- <img src="{{url_for('static', filename='output.jpg')}}"> -->
+					<img src="{{url_for('static', filename=image_name)}}">
 
-	</div>
+			
+			</div>
+		</div>
+	</div>	
+	<!-- <br> -->
+	
 
 </body>
 </html>

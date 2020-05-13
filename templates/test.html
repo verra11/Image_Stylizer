@@ -1,17 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 <head>
+	<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+	<meta charset="utf-8"/>
 	<title>Image Stylizer</title>
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Varela+Round" />
 	<style type="text/css">
 		
 		body {
 
-			background-color: lightblue;
+			background: url('static/otherbg.png') no-repeat center center fixed;
+  			background-size: cover;
+	  		height: 100%;
+	  		overflow: hidden;
 
 		}
 		h2 {
 			text-align: center;
-			font-family: sans-serif;
+			/*background-color: white;*/
+			color: white;
+			font-size: 64px;
+			font-family: "Varela Round";
+			margin: 30px 0 50px;
+		}
+
+		h5{
+			color: #FF7D32;
+			font-size: 32px;
+			font-family: "Varela Round";
+			margin-bottom: 12px;
 		}
 
 		.inp {
@@ -19,41 +38,193 @@
 			font-family: sans-serif;
 		}
 
+		.leftsided{
+			width: 50%;
+			padding-top: 50px;
+			float: left;
+			text-align: center;
+		}
+
+		.illus{
+			width: 75%;
+		}
+
+		.rightsided{
+
+			width: 50%;
+			margin-left: 50%;
+			padding-top: 1px;
+			text-align: center;
+		}
+		.custom-file-input {
+			color: transparent;
+		}
+		.custom-file-input::-webkit-file-upload-button {
+			visibility: collapse;
+		}
+		.custom-file-input::before {
+			content: 'Select some files';
+			color: black;
+			width: 40%;
+			text-align: center;
+			display: inline-block;
+			background: #3D338A;
+			border: 2px solid #3D338A;
+			border-radius: 8px;
+			padding: 8px 8px;
+			outline: none;
+			white-space: nowrap;
+			-webkit-user-select: none;
+			cursor: pointer;
+			font-size: 10pt;
+		}
+		.custom-file-input:hover::before {
+			border-color: black;
+		}
+
+		.image{
+			width: 75%;
+			height: 400px;
+			object-fit: cover;
+			border-radius: 8px;
+		}
+
 		#btn_submit, #btn_up, #label {
+			width: 75%;
 			margin: 1px;
 			border: 0;
 			padding: 5px;
-			color: black;
+			color: white;
+			background-color: #3D338A;
+			border: 2px solid #3D338A;
 			/*background-color: #00005c;*/
+			font-family: "Varela Round";
 			text-align: center;
 			cursor: pointer;
-			border-radius: 5px;
+			border-radius: 20px;
 		}
 		#btn_submit:hover {
-			background: black;
-			color: white;
+			background: white;
+			color: #3D338A;
 		}
+
+		.file-upload {
+		display: inline-flex;
+		align-items: center;
+		margin-top: 8px;
+		font-size: 15px;
+		}
+
+		.file-upload__input {
+		display: none;
+		}
+
+		.file-upload__button {
+		-webkit-appearance: none;
+		background:  #3D338A;
+		border: 2px solid  #3D338A;
+		border-radius: 8px;
+		outline: none;
+		padding: 0.5em 0.8em;
+		margin-right: 15px;
+		color: #ffffff;
+		font-size: 1em;
+		font-family: "Varela Round";
+		font-weight: bold;
+		cursor: pointer;
+		}
+
+		.file-upload__button:hover{
+			background: white;
+			color: #3D338A;
+		}
+
+		.file-upload__button:active {
+		background:#3D338A;
+		}
+
+		.file-upload__label {
+		max-width: 250px;
+		font-size: 0.95em;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		font-family: "Quicksand", sans-serif;
+		}
+
 
 	</style>
 </head>
 <body>
 
-	<h2>Upload your image</h2>
+	<h2>IMAGE STYLIZER</h2>
 
-	<div class="inp">
+	<div style="width: 100%">
+		<div class="leftsided">
+			<form action="/upload" method="POST" enctype="multipart/form-data">
+					<img class="image"  id="blah" src="static/uploadimg.svg" alt="yourimage" />
+					<br>
+					<!-- <input class="custom-file-input" type='file' onchange="readURL(this);" /> -->
+					<div class="file-upload">
+						<input class="file-upload__input" type="file" onchange="readURL(this);" name="myFile[]" id="myFile" multiple>
+						<button class="file-upload__button" type="button">Choose File</button>
+						<span class="file-upload__label"></span>
+					</div>
+					<br>
+					<br>
+					<input id="btn_submit" type="submit" value="UPLOAD">
+			</form>
+		</div>
+		<div class="rightsided">
+			<h5>#UPLOAD</h5>
+			<img src="static/two.svg" class="illus"/>
+		</div>	
+	</div>	
 
-	<form action="/upload" method="POST" enctype="multipart/form-data">
 
-		<label id="label">Content Image :</label>
-		<input id="btn_up" type="file" name="file" accept="image/*">
-		<br>
-		<br>
-		<input id="btn_submit" type="submit" value="Upload">
+	<script>
+		function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-	</form>
-	
-	</div>
+                reader.onload = function (e) {
+                    $('#blah')
+						.attr('src', e.target.result)
+                };
 
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+		Array.prototype.forEach.call(
+		document.querySelectorAll(".file-upload__button"),
+		function(button) {
+			const hiddenInput = button.parentElement.querySelector(
+			".file-upload__input"
+			);
+			const label = button.parentElement.querySelector(".file-upload__label");
+			const defaultLabelText = "No file selected";
 
+			// Set default text for label
+			label.textContent = defaultLabelText;
+			label.title = defaultLabelText;
+
+			button.addEventListener("click", function() {
+			hiddenInput.click();
+			});
+
+			hiddenInput.addEventListener("change", function() {
+			const filenameList = Array.prototype.map.call(hiddenInput.files, function(
+				file
+			) {
+				return file.name;
+			});
+
+			label.textContent = filenameList.join(", ") || defaultLabelText;
+			label.title = label.textContent;
+			});
+		}
+		);
+
+	</script>
 </body>
 </html>
