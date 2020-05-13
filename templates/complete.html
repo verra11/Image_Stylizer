@@ -5,15 +5,7 @@
 	<script type="text/javascript"
     src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-    <script type="text/javascript">
-		$(document).ready(function(){    
-	    if(document.URL.indexOf("#")==-1){
-        url = document.URL+"#";
-        location = "#";
-        location.reload(true);
-		    }
-		});
-	</script>
+
 
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Varela+Round" />
 	<style type="text/css">
@@ -77,16 +69,21 @@
 		</div>
 		<div class="rightsided">
 			<div class="gallery" align="center">
-				<!-- <img src="{{url_for('send_image', filename=image_name)}}"> -->
-				<!-- <img src="{{url_for('static', filename='output.jpg')}}"> -->
 					<img src="{{url_for('static', filename=image_name)}}">
 
 			
 			</div>
 		</div>
 	</div>	
-	<!-- <br> -->
-	
+    <script type="text/javascript">
+		$(document).ready(function(){    
+	    if(document.URL.indexOf("#")==-1){
+        url = document.URL+"#";
+        location = "#";
+        location.reload(true);
+		    }
+		});
+	</script>
 
 </body>
 </html>
