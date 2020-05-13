@@ -40,7 +40,7 @@ def run_model():
     beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
 
     cv2.imwrite("static/output.jpg", img)
-    cv2.imwrite("images/output/output.jpg", img)
+#     cv2.imwrite("images/output/output.jpg", img)
 
 @app.route("/", methods=['GET'])
 def home():
@@ -72,8 +72,8 @@ def upload():
         destination = "/".join([target, "content.jpg"])
         print(destination)
         file.save(destination)
-        d2 = os.path.join(APP_ROOT, 'images/content/content.jpg')
-        file.save(d2)
+#         d2 = os.path.join(APP_ROOT, 'images/content/content.jpg')
+#         file.save(d2)
         # file_name=filename
 
     run_model()
@@ -89,4 +89,4 @@ def send_image(filename):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
